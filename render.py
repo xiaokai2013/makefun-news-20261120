@@ -7,7 +7,7 @@ against reporting dated 19-20 November 2026) and renders a 1024x1024
 newspaper front page with PIL. Writes entry.png next to this script; set OUT
 to override. This is NOT the entrypoint: the graded program is main.py,
 which only copies the committed entry.png. Run this only to rebuild the
-image (needs PIL + Liberation fonts).
+image (needs Pillow and Liberation fonts; DejaVu is the fallback).
 
 Deterministic by construction: no clock, no randomness, no network, fixed
 fonts. The same news.json always produces the same PNG bytes.

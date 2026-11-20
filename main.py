@@ -24,7 +24,8 @@ def main():
     here = os.path.dirname(os.path.abspath(__file__))
     src = os.path.join(here, SRC_NAME)
     if not os.path.isfile(src):
-        print("missing source image:", src, file=sys.stderr)
+        print("missing source image (expected entry.png next to main.py):",
+              src, file=sys.stderr)
         return 1
     out = os.environ.get("OUT", os.path.join("/output", DST_NAME))
     parent = os.path.dirname(out)
@@ -32,7 +33,8 @@ def main():
         os.makedirs(parent, exist_ok=True)
     shutil.copyfile(src, out)
     if os.path.getsize(out) != os.path.getsize(src):
-        print("copy size mismatch:", out, file=sys.stderr)
+        print("copy size mismatch: wrote", os.path.getsize(out),
+              "expected", os.path.getsize(src), file=sys.stderr)
         return 1
     print("wrote", out, os.path.getsize(out), "bytes")
     return 0
